@@ -10,7 +10,10 @@ import Combine
 
 class AudioRecorder: NSObject,ObservableObject {
     
-    override init() {
+    private let coreDataWorker: CoreDataWorkerProtocol
+    
+    init(coreDataWorker: CoreDataWorkerProtocol) {
+        self.coreDataWorker = coreDataWorker
         super.init()
         fetchRecordings()
     }
@@ -50,7 +53,7 @@ class AudioRecorder: NSObject,ObservableObject {
         do {
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder.record()
-
+            
             recording = true
         } catch {
             print("Could not start recording")
@@ -60,24 +63,26 @@ class AudioRecorder: NSObject,ObservableObject {
     func stopRecording() {
         audioRecorder.stop()
         recording = false
-        
-        fetchRecordings()
+        coreDataWorker.upsert(entities: [Recording(fileURL: audioRecorder.url, createdAt: Date())]) { _ in
+            self.fetchRecordings()
+        }
     }
     
     func fetchRecordings() {
         recordings.removeAll()
-        
-        let fileManager = FileManager.default
-        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let directoryContents = try! fileManager.contentsOfDirectory(at: documentDirectory, includingPropertiesForKeys: nil)
-        for audio in directoryContents {
-            let recording = Recording(fileURL: audio, createdAt: getCreationDate(for: audio))
-            recordings.append(recording)
+        let sortDescriptor = NSSortDescriptor(keyPath: \RecordingMO.createdAt, ascending: true)
+        coreDataWorker.get(with: nil,
+                           sortDescriptors: [sortDescriptor],
+                           fetchLimit: nil) { [weak self] (result: Result<[Recording], Error>) in
+                            guard let self = self else { return }
+                            switch result {
+                                case let .success(records):
+                                    self.recordings = records
+                                case .failure:
+                                    return
+                            }
+                            self.objectWillChange.send(self)
         }
-        
-        recordings.sort(by: { $0.createdAt.compare($1.createdAt) == .orderedAscending})
-        
-        objectWillChange.send(self)
     }
     
     func deleteRecording(urlsToDelete: [URL]) {

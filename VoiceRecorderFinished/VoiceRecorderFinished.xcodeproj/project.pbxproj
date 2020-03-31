@@ -21,6 +21,13 @@
 		4567B76123683F93001B9D3E /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4567B75B23683F93001B9D3E /* Helper.swift */; };
 		4567B76223683F93001B9D3E /* RecordingsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4567B75C23683F93001B9D3E /* RecordingsList.swift */; };
 		4567B76723688406001B9D3E /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4567B76623688406001B9D3E /* AudioPlayer.swift */; };
+		58554EB62433880B0032154E /* VoiceRecorderFinished.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58554EB42433880B0032154E /* VoiceRecorderFinished.xcdatamodeld */; };
+		58554EB824338C790032154E /* RecordingMO+MOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58554EB724338C790032154E /* RecordingMO+MOProtocol.swift */; };
+		58554EBF24338D770032154E /* ManagedObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58554EBA24338D760032154E /* ManagedObjectConvertible.swift */; };
+		58554EC024338D770032154E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58554EBB24338D760032154E /* CoreDataStack.swift */; };
+		58554EC124338D770032154E /* ManagedObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58554EBC24338D760032154E /* ManagedObjectProtocol.swift */; };
+		58554EC224338D770032154E /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58554EBD24338D760032154E /* CoreDataWorker.swift */; };
+		58554EC324338D770032154E /* CoreDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58554EBE24338D770032154E /* CoreDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +68,13 @@
 		4567B75B23683F93001B9D3E /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		4567B75C23683F93001B9D3E /* RecordingsList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsList.swift; sourceTree = "<group>"; };
 		4567B76623688406001B9D3E /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		58554EB52433880B0032154E /* VoiceRecorderFinished.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VoiceRecorderFinished.xcdatamodel; sourceTree = "<group>"; };
+		58554EB724338C790032154E /* RecordingMO+MOProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecordingMO+MOProtocol.swift"; sourceTree = "<group>"; };
+		58554EBA24338D760032154E /* ManagedObjectConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectConvertible.swift; sourceTree = "<group>"; };
+		58554EBB24338D760032154E /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		58554EBC24338D760032154E /* ManagedObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectProtocol.swift; sourceTree = "<group>"; };
+		58554EBD24338D760032154E /* CoreDataWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
+		58554EBE24338D770032154E /* CoreDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +130,7 @@
 				4567B76323686A97001B9D3E /* Views */,
 				4567B76423686AAE001B9D3E /* Audio Managers */,
 				4567B76523686ADC001B9D3E /* Div */,
+				58554EB924338D4B0032154E /* CoreData */,
 				4567B72D23683F75001B9D3E /* Assets.xcassets */,
 				4567B73223683F75001B9D3E /* LaunchScreen.storyboard */,
 				4567B73523683F75001B9D3E /* Info.plist */,
@@ -171,11 +186,33 @@
 		4567B76523686ADC001B9D3E /* Div */ = {
 			isa = PBXGroup;
 			children = (
+				58554EB3243387ED0032154E /* CoreData */,
 				4567B75A23683F93001B9D3E /* RecordingDataModel.swift */,
 				4567B75B23683F93001B9D3E /* Helper.swift */,
 				4567B75923683F93001B9D3E /* Extensions.swift */,
 			);
 			path = Div;
+			sourceTree = "<group>";
+		};
+		58554EB3243387ED0032154E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				58554EB42433880B0032154E /* VoiceRecorderFinished.xcdatamodeld */,
+				58554EB724338C790032154E /* RecordingMO+MOProtocol.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		58554EB924338D4B0032154E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				58554EBE24338D770032154E /* CoreDataProvider.swift */,
+				58554EBB24338D760032154E /* CoreDataStack.swift */,
+				58554EBD24338D760032154E /* CoreDataWorker.swift */,
+				58554EBA24338D760032154E /* ManagedObjectConvertible.swift */,
+				58554EBC24338D760032154E /* ManagedObjectProtocol.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,13 +348,20 @@
 			files = (
 				4567B75F23683F93001B9D3E /* Extensions.swift in Sources */,
 				4567B76123683F93001B9D3E /* Helper.swift in Sources */,
+				58554EB62433880B0032154E /* VoiceRecorderFinished.xcdatamodeld in Sources */,
 				4567B76723688406001B9D3E /* AudioPlayer.swift in Sources */,
 				4567B72823683F74001B9D3E /* AppDelegate.swift in Sources */,
+				58554EC224338D770032154E /* CoreDataWorker.swift in Sources */,
+				58554EB824338C790032154E /* RecordingMO+MOProtocol.swift in Sources */,
+				58554EC024338D770032154E /* CoreDataStack.swift in Sources */,
 				4567B76223683F93001B9D3E /* RecordingsList.swift in Sources */,
+				58554EC124338D770032154E /* ManagedObjectProtocol.swift in Sources */,
 				4567B72A23683F74001B9D3E /* SceneDelegate.swift in Sources */,
 				4567B76023683F93001B9D3E /* RecordingDataModel.swift in Sources */,
 				4567B75E23683F93001B9D3E /* AudioRecorder.swift in Sources */,
+				58554EBF24338D770032154E /* ManagedObjectConvertible.swift in Sources */,
 				4567B75D23683F93001B9D3E /* ContentView.swift in Sources */,
+				58554EC324338D770032154E /* CoreDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +686,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		58554EB42433880B0032154E /* VoiceRecorderFinished.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				58554EB52433880B0032154E /* VoiceRecorderFinished.xcdatamodel */,
+			);
+			currentVersion = 58554EB52433880B0032154E /* VoiceRecorderFinished.xcdatamodel */;
+			path = VoiceRecorderFinished.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4567B71C23683F74001B9D3E /* Project object */;
 }
